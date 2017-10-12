@@ -25,7 +25,7 @@ endfunction()
 
 function(target_add_manifest target)
 	cmake_parse_arguments(_mt "ENABLE_VISUAL_THEMES;ENABLE_HIDPI_SUPPORT;ENABLE_VERSIONING;ENABLE_UAC_ASINVOKER" "" "ADDITIONAL_FRAGMENTS" ${ARGN})
-	set(tools_dir ${REACTOS_INTERNET_EXPLORER_SOURCE_DIR}/tools)
+	set(tools_dir ${IECLASSIC_SOURCE_DIR}/tools)
 
 	set(_manifest_files ${_mt_ADDITIONAL_FRAGMENTS})
 	if(_mt_ENABLE_VISUAL_THEMES)
