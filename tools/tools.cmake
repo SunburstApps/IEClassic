@@ -20,7 +20,8 @@ function(spec2def _dllname _spec_file)
 	add_custom_command(
 		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_file}.def ${CMAKE_CURRENT_BINARY_DIR}/${_file}_stubs.c
 		COMMAND $<TARGET_FILE:spec2def> ${_ms_flag} -a=${SPEC2DEF_ARCH} -n=${_dllname} -d=${CMAKE_CURRENT_BINARY_DIR}/${_file}.def -s=${CMAKE_CURRENT_BINARY_DIR}/${_file}_stubs.c ${_spec_file}
-		DEPENDS ${_spec_file} spec2def)
+		DEPENDS ${_spec_file} spec2def
+		COMMENT "Running spec2def" VERBATIM)
 endfunction()
 
 function(target_add_manifest target)
@@ -47,6 +48,7 @@ function(target_add_manifest target)
 	else()
 		add_custom_command(TARGET ${target} POST_BUILD
 			COMMAND mt.exe -nologo -manifest ${_manifest_files} -outputresource:$<TARGET_FILE:${target}> -canonicalize
-			DEPENDS ${_manifest_files} ${target})
+			DEPENDS ${_manifest_files} ${target}
+			COMMENT "Adding manifest resource" VERBATIM)
 	endif()
 endfunction()
