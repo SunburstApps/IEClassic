@@ -1,3 +1,4 @@
 add_subdirectory(DialogLayout)
 add_subdirectory(FontScalingControl)
+add_subdirectory(wine_support)
 add_subdirectory(wtl)
