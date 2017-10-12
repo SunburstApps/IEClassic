@@ -10,3 +10,4 @@ include(tools/tools.cmake)
 add_definitions(-DUNICODE)
 
 add_subdirectory(libs)
+add_subdirectory(app)
