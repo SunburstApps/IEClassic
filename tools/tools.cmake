@@ -28,7 +28,7 @@ function(spec2def _dllname _spec_file)
 endfunction()
 
 function(target_add_manifest target)
-	cmake_parse_arguments(_mt "ENABLE_VISUAL_THEMES;ENABLE_HIDPI_SUPPORT;ENABLE_VERSIONING" "" "ADDITIONAL_FRAGMENTS" ${ARGN})
+	cmake_parse_arguments(_mt "ENABLE_VISUAL_THEMES;ENABLE_HIDPI_SUPPORT;ENABLE_VERSIONING;ENABLE_UAC_ASINVOKER" "" "ADDITIONAL_FRAGMENTS" ${ARGN})
 	set(tools_dir ${REACTOS_INTERNET_EXPLORER_SOURCE_DIR}/tools)
 
 	set(_manifest_files ${_mt_ADDITIONAL_FRAGMENTS})
@@ -40,6 +40,9 @@ function(target_add_manifest target)
 	endif()
 	if(_mt_ENABLE_VERSIONING)
 		list(APPEND _manifest_files "${tools_dir}/manifests/versioning.manifest")
+	endif()
+	if(_mt_ENABLE_UAC_ASINVOKER)
+		list(APPEND _manifest_files "${tools_dir}/manifests/uac_as_invoker.manifest")
 	endif()
 
 	list(LENGTH _manifest_files manifest_file_count)
