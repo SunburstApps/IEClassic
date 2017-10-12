@@ -11,14 +11,10 @@ function(spec2def _dllname _spec_file)
 		set(_ms_flag --ms)
 	endif()
 
-	if(CMAKE_GENERATOR MATCHES "Visual Studio .. .... Win64")
+	if(CMAKE_SIZEOF_VOID_P EQUALS 8)
 		set(SPEC2DEF_ARCH x86_64)
-	elseif(CMAKE_GENERATOR MATCHES "Visual Studio .. .... ARM")
-		set(SPEC2DEF_ARCH arm)
-	elseif(CMAKE_GENERATOR MATCHES "Visual Studio .. ....")
-		set(SPEC2DEF_ARCH i386)
 	else()
-		message(FATAL_ERROR "Don't know how to extract the target architecture for this generator")
+		set(SPEC2DEF_ARCH i386)
 	endif()
 
 	add_custom_command(
