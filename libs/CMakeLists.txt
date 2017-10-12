@@ -1,0 +1,3 @@
+add_subdirectory(DialogLayout)
+add_subdirectory(FontScalingControl)
+add_subdirectory(wtl)

@@ -1,0 +1,2 @@
+add_library(FontScalingControl STATIC FontScalingControl.cpp)
+target_include_directories(FontScalingControl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
