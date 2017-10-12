@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 
 REM Does the user need help?
 if /I "%1" == "help" goto help
