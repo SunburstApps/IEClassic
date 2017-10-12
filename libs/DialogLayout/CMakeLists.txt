@@ -1,7 +1,7 @@
 set(SOURCE
     DialogItemTemplate.cpp
     DialogTemplate.cpp
-    DialogLayout.h
+    DialogLayout.cpp
 
     DialogItemTemplate.h
     DialogTemplate.h
