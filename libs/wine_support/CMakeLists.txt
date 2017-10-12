@@ -1,6 +1,7 @@
 set(SOURCE
 	wine/registrar.h
 	wine/registrar.cpp
+	wine/stubs.h
 )
 
 add_library(wine_support STATIC ${SOURCE})
