@@ -5,4 +5,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 add_subdirectory(tools)
 include(tools/tools.cmake)
 
+# Enable the Unicode (WCHAR-based) APIs on all product code.
+add_definitions(-DUNICODE)
+
 add_subdirectory(libs)
