@@ -2,6 +2,7 @@ include(CMakeParseArguments)
 
 function(spec2def _dllname _spec_file)
 	get_filename_component(_file ${_dllname} NAME_WE)
+	get_filename_component(_spec_file_abs ${_spec_file} REALPATH)
 
 	if(NOT ${_spec_file} MATCHES ".*\\.spec$")
 		message(FATAL_ERROR "spec2def accepts only *.spec files as output")
@@ -11,7 +12,7 @@ function(spec2def _dllname _spec_file)
 		set(_ms_flag --ms)
 	endif()
 
-	if(CMAKE_SIZEOF_VOID_P EQUALS 8)
+	if(${CMAKE_SIZEOF_VOID_P} EQUAL 8)
 		set(SPEC2DEF_ARCH x86_64)
 	else()
 		set(SPEC2DEF_ARCH i386)
@@ -19,7 +20,7 @@ function(spec2def _dllname _spec_file)
 
 	add_custom_command(
 		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_file}.def ${CMAKE_CURRENT_BINARY_DIR}/${_file}_stubs.c
-		COMMAND $<TARGET_FILE:spec2def> ${_ms_flag} -a=${SPEC2DEF_ARCH} -n=${_dllname} -d=${CMAKE_CURRENT_BINARY_DIR}/${_file}.def -s=${CMAKE_CURRENT_BINARY_DIR}/${_file}_stubs.c ${_spec_file}
+		COMMAND $<TARGET_FILE:spec2def> ${_ms_flag} -a=${SPEC2DEF_ARCH} -n=${_dllname} -d=${CMAKE_CURRENT_BINARY_DIR}/${_file}.def -s=${CMAKE_CURRENT_BINARY_DIR}/${_file}_stubs.c ${_spec_file_abs}
 		DEPENDS ${_spec_file} spec2def
 		COMMENT "Running spec2def" VERBATIM)
 endfunction()
