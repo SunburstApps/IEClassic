@@ -1832,7 +1832,7 @@ static void add_icon_to_control(HWND hwnd, int id)
 		(void**)&dataObject);
 	if (FAILED(hr))
 		goto end;
-	hr = IRichEditOle_GetClientSite(richEditOle, &clientSite);
+	hr = richEditOle->lpVtbl->GetClientSite(richEditOle, &clientSite);
 	if (FAILED(hr))
 		goto end;
 	bitmap = LoadImageW(hInstance, MAKEINTRESOURCEW(id), IMAGE_BITMAP, 0, 0,
@@ -1857,7 +1857,7 @@ static void add_icon_to_control(HWND hwnd, int id)
 	reObject.dwFlags = 0;
 	reObject.dwUser = 0;
 
-	IRichEditOle_InsertObject(richEditOle, &reObject);
+	richEditOle->lpVtbl->InsertObject(richEditOle, &reObject);
 
 end:
 	if (clientSite)
@@ -1869,7 +1869,7 @@ end:
 	if (object)
 		IOleObject_Release(object);
 	if (richEditOle)
-		IRichEditOle_Release(richEditOle);
+		richEditOle->lpVtbl->Release(richEditOle);
 }
 
 #define MY_INDENT 200
