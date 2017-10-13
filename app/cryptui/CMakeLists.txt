@@ -2,7 +2,7 @@ spec2def(ieclassic_cryptui.dll cryptui.spec)
 
 set(SOURCE
 	cryptui.c
-	cryptui.rc
+	cryptui_wine.rc
 	cryptui_res.h
 
 	${CMAKE_CURRENT_BINARY_DIR}/ieclassic_cryptui_stubs.c
