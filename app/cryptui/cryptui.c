@@ -40,7 +40,7 @@
 #include <commdlg.h>
 #include <commctrl.h>
 #include <cryptuiapi.h>
-#include "resource.h"
+#include "cryptui_res.h"
 //#include "urlmon.h"
 #include <hlink.h>
 #include <winreg.h>
